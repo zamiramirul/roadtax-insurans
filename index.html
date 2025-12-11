@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="ms">
 <head>
 <meta charset="UTF-8">
@@ -15,7 +15,6 @@
   --green:#25D366;
   --radius:12px;
 }
-/* === KEEP ALL EXISTING STYLES EXACTLY AS BEFORE === */
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:Inter,Arial,sans-serif;background:var(--primary);color:var(--text);line-height:1.5;overflow-x:hidden;}
 a{text-decoration:none;color:inherit;}
@@ -47,7 +46,7 @@ p{text-align:center;color:var(--muted);margin-bottom:10px;}
 .testimonial h4{color:var(--accent);margin-bottom:8px;}
 .testimonial p{color:var(--muted);font-size:14px;}
 
-/* --- NEW: Live Visitor (kept) --- */
+/* Live Visitor */
 .live-visitor{
   text-align:center;
   font-weight:700;
@@ -56,7 +55,7 @@ p{text-align:center;color:var(--muted);margin-bottom:10px;}
   margin-top:10px;
 }
 
-/* --- NEW: Urgency Bar (kept) --- */
+/* Urgency Bar */
 .urgency-box{
   background:#0c132e;
   padding:15px;
@@ -79,7 +78,7 @@ p{text-align:center;color:var(--muted);margin-bottom:10px;}
 label{display:block;margin-top:12px;margin-bottom:6px;font-weight:700;color:var(--accent);font-size:15px;text-align:center;}
 .select-wrap{position:relative;width:100%;}
 .select-wrap::after{content:"▼";position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--accent);}
-select,input{width:100%;height:50px;padding:0 16px;font-size:15px;border-radius:var(--radius);border:2px solid rgba(250,204,21,0.25);outline:none;background:var(--primary);color:var(--accent);font-weight:700;text-align:center;appearance:none;transition:0.2s;}
+select,input{width:100%;height:50px;padding:0 16px;font-size:15px;border-radius:var(--radius);border:2px solid rgba(250,204,21,0.25);outline:none;background:var(--primary);color:var(--accent);font-weight:700;text-align:center;appearance:none;box-sizing:border-box;transition:0.2s;}
 select:focus,input:focus{border-color:var(--accent);box-shadow:0 0 8px rgba(250,204,21,0.4);}
 input::placeholder{color:rgba(250,204,21,0.45);}
 button{margin-top:25px;width:100%;padding:15px;border:none;font-size:18px;font-weight:900;border-radius:14px;background:linear-gradient(135deg,#facc15,#f59e0b);color:#000;cursor:pointer;box-shadow:0 10px 20px rgba(250,204,21,0.35);transition:0.25s;}
@@ -90,7 +89,7 @@ button:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(250,204,21,0
 .cta-floating{position:fixed;bottom:20px;right:20px;background:var(--green);color:#fff;padding:12px 18px;border-radius:50px;font-weight:700;box-shadow:0 6px 12px rgba(0,0,0,0.2);z-index:999;text-align:center;}
 .cta-floating:hover{transform:translateY(-2px);transition:0.2s;}
 
-/* Notification Popup (kept) */
+/* Notification Popup */
 .noti-popup{
   position:fixed;
   left:20px;
@@ -107,58 +106,70 @@ button:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(250,204,21,0
   display:none;
 }
 
-/* === MINIMAL EXIT POPUP (ISOLATED, NON-INVASIVE) === */
-#exitMinimal {
+/* EXIT INTENT POPUP */
+.exit-overlay {
   position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(3px);
+  z-index: 99998;
+  display: none;
+  opacity: 0;
+  transition: 0.25s ease;
+}
+
+.exit-popup {
+  position: fixed;
+  top: 50%;
   left: 50%;
-  top: 48%;
-  transform: translate(-50%, -50%) scale(.98);
-  min-width: 260px;
-  max-width: 88%;
-  background: rgba(11,17,30,0.98);
-  border: 1px solid rgba(250,204,21,0.18);
-  box-shadow: 0 8px 28px rgba(0,0,0,0.55);
-  padding: 12px 14px;
-  border-radius: 10px;
-  z-index: 120000;
-  display: none; /* start hidden */
+  transform: translate(-50%, -50%) scale(0.75);
+  background: #0b122b;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  padding: 28px;
+  width: 90%;
+  max-width: 380px;
+  border-radius: 20px;
   text-align: center;
-}
-#exitMinimal.show { display:block; animation: popSmall .22s ease forwards; transform: translate(-50%, -50%) scale(1); }
-@keyframes popSmall { from {opacity:0; transform: translate(-50%, -50%) scale(.96);} to {opacity:1; transform: translate(-50%, -50%) scale(1);} }
-
-#exitMinimal h4 { color: var(--accent); font-size:15px; margin:6px 0; font-weight:800; }
-#exitMinimal p { color: var(--muted); font-size:13px; margin:6px 0 10px; line-height:1.3; }
-#exitMinimal .btn-row { display:flex; gap:8px; justify-content:center; align-items:center; }
-#exitMinimal .btn-whatsapp {
-  background: var(--green);
-  color:#001;
-  padding:8px 10px;
-  border-radius:8px;
-  font-weight:800;
-  font-size:13px;
-  text-decoration:none;
-}
-#exitMinimal .btn-close {
-  background: transparent;
-  color: rgba(250,204,21,0.95);
-  border: 1px solid rgba(250,204,21,0.12);
-  padding:7px 10px;
-  border-radius:8px;
-  font-weight:700;
-  font-size:13px;
-  cursor:pointer;
+  font-weight: 800;
+  font-size: 19px;
+  z-index: 99999;
+  display: none;
+  opacity: 0;
+  box-shadow: 0 0 25px rgba(250,204,21,0.75), 0 0 60px rgba(250,204,21,0.25);
+  transition: 0.25s ease;
 }
 
-/* responsive nicety */
-@media(max-width:420px){
-  #exitMinimal { left:50%; top:52%; }
+.exit-overlay.show {
+  display: block;
+  opacity: 1;
+}
+
+.exit-popup.show {
+  display: block;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.exit-close {
+  margin-top: 20px;
+  padding: 14px 20px;
+  background: var(--accent);
+  color: #000;
+  border-radius: 14px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(250,204,21,0.4);
+}
+
+@media(max-width:600px){
+  .hero-inner h1{font-size:22px;}
+  .hero-inner p{font-size:14px;}
+  .benefits,.steps{flex-direction:column;}
 }
 </style>
 </head>
 <body>
-
-<!-- (ALL page content kept exactly as you provided) -->
 
 <!-- Hero Banner -->
 <section class="hero">
@@ -175,7 +186,7 @@ button:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(250,204,21,0
   <span class="badge">Fast & Easy Processing</span>
 </div>
 
-<!-- NEW Live Visitor -->
+<!-- Live Visitor -->
 <div class="live-visitor" id="liveVisitor">🔵 8 pelawat sedang melihat halaman ini</div>
 
 <!-- Benefits -->
@@ -217,7 +228,7 @@ button:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(250,204,21,0
   <div class="urgency-bar"><div class="urgency-fill"></div></div>
 </div>
 
-<!-- WhatsApp Form (NOT EDITED) -->
+<!-- WhatsApp Form -->
 <section class="wrap">
 <h2>BORANG SEBUT HARGA</h2>
 
@@ -293,130 +304,111 @@ button:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(250,204,21,0
 <!-- Notification Popup -->
 <div class="noti-popup" id="notiPopup">Seseorang baru sahaja renew insurans • 7 minit lalu</div>
 
-<!-- === Minimal Exit Popup (STYLE A) === -->
-<div id="exitMinimal" aria-hidden="true" role="dialog" aria-label="Popup sebelum keluar">
-  <h4>Sebelum anda keluar…</h4>
-  <p>nak kami kira anggaran insurans &amp; roadtax anda secara <strong>PERCUMA</strong>?</p>
-  <div class="btn-row">
-    <a class="btn-whatsapp" href="https://wa.me/60179699926?text=Sebelum%20keluar%20-%20saya%20nak%20anggaran%20insurans%20%26%20roadtax">Terus WhatsApp</a>
-    <button class="btn-close" id="exitMinimalClose" type="button">Tutup</button>
-  </div>
+<!-- EXIT POPUP -->
+<div class="exit-overlay" id="exitOverlay"></div>
+<div class="exit-popup" id="exitPopup">
+  Sebelum anda keluar…<br>
+  <span style="color:#fff;font-weight:600;font-size:17px;display:block;margin-top:6px;">
+    Claim dulu sebutharga percuma anda 🚀
+  </span>
+  <div class="exit-close" id="exitCloseBtn">OK, Teruskan</div>
 </div>
 
 <footer style="text-align:center;color:var(--accent);font-size:13px;margin-top:20px;">© 2025 Renew Premium • Semua Hak Terpelihara</footer>
 
-<script>
-// === Keep existing behaviours (testimonials, live visitor, noti) ===
-let track=document.getElementById("testimonialTrack");
-let idx=0;
-setInterval(()=>{ if(track && track.children.length){ idx=(idx+1)%track.children.length; track.style.transform=`translateX(-${idx*100}%)`; } },4000);
 
-function randomVisitor(){ let v=Math.floor(Math.random()*6)+6; const el=document.getElementById("liveVisitor"); if(el) el.textContent="🔵 "+v+" pelawat sedang melihat halaman ini"; }
+<script>
+// Testimonial Slider
+let track=document.getElementById("testimonialTrack");
+let index=0;
+setInterval(()=>{
+  index=(index+1)%track.children.length;
+  track.style.transform=`translateX(-${index*100}%)`;
+},4000);
+
+// Live Visitor Count
+function randomVisitor(){
+  let v=Math.floor(Math.random()*6)+6;
+  document.getElementById("liveVisitor").textContent="🔵 "+v+" pelawat sedang melihat halaman ini";
+}
 setInterval(randomVisitor,6000);
 
-function showNoti(){ const b=document.getElementById("notiPopup"); if(!b) return; b.style.display="block"; setTimeout(()=>b.style.display="none",4200); }
+// Notification Popup
+function showNoti(){
+  const box=document.getElementById("notiPopup");
+  box.style.display="block";
+  setTimeout(()=>{box.style.display="none"},4200);
+}
 setTimeout(showNoti,3000);
 setInterval(showNoti,20000);
 
-// === Form logic (unchanged) ===
-function hide(label,field){ if(label) label.style.display="none"; if(field && field.parentElement) field.parentElement.style.display="none"; }
-function show(label,field){ if(label) label.style.display="block"; if(field && field.parentElement) field.parentElement.style.display="block"; }
+// Dynamic Fields
+function hide(label,field){label.style.display="none";field.parentElement.style.display="none";}
+function show(label,field){label.style.display="block";field.parentElement.style.display="block";}
 function updateFields(){
-  const jenis = document.getElementById("jenis") ? document.getElementById("jenis").value : "";
-  const coverage = document.getElementById("coverage") ? document.getElementById("coverage").value : "";
-  const labelCermin = document.getElementById("labelCermin");
-  const cermin = document.getElementById("cermin");
-  const labelBanjir = document.getElementById("labelBanjir");
-  const banjir = document.getElementById("banjir");
-  const labelTowing = document.getElementById("labelTowing");
-  const towing = document.getElementById("towing");
-  if(labelCermin && cermin){ show(labelCermin,cermin); show(labelBanjir,banjir); show(labelTowing,towing); }
-  if(jenis==="Motosikal"){ hide(labelCermin,cermin); hide(labelBanjir,banjir); hide(labelTowing,towing); }
-  if(jenis==="Kereta" && coverage==="3rd Party"){ hide(labelCermin,cermin); hide(labelBanjir,banjir); }
+  let jenis=document.getElementById("jenis").value;
+  let coverage=document.getElementById("coverage").value;
+  show(labelCermin,cermin);show(labelBanjir,banjir);show(labelTowing,towing);
+  if(jenis==="Motosikal"){hide(labelCermin,cermin);hide(labelBanjir,banjir);hide(labelTowing,towing);}
+  if(jenis==="Kereta" && coverage==="3rd Party"){hide(labelCermin,cermin);hide(labelBanjir,banjir);}
 }
-document.getElementById("jenis").addEventListener("change", updateFields);
-document.getElementById("coverage").addEventListener("change", updateFields);
+jenis.addEventListener("change",updateFields);
+coverage.addEventListener("change",updateFields);
 updateFields();
 
-document.getElementById("waForm").addEventListener("submit", function(e){
+// WhatsApp Submit
+const WHATSAPP_RECEIVER='60179699926';
+document.getElementById("waForm").addEventListener("submit",function(e){
   e.preventDefault();
   const statusEl=document.getElementById("status");
-  const nama=document.getElementById("nama").value||'';
-  const wasap=document.getElementById("wasap").value||'';
-  const jenis=document.getElementById("jenis").value||'—';
-  const coverage=document.getElementById("coverage").value||'—';
-  const cermin=document.getElementById("cermin"); const coverCermin=(cermin && cermin.parentElement.style.display!=='none')?cermin.value:'Tiada';
-  const banjir=document.getElementById("banjir"); const banj=(banjir && banjir.parentElement.style.display!=='none')?banjir.value:'Tiada';
-  const towing=document.getElementById("towing"); const tow=(towing && towing.parentElement.style.display!=='none')?towing.value:'Tiada';
-  const digital=document.getElementById("digital") ? document.getElementById("digital").value : '';
-  const msg=`BORANG SEBUTHARGA INSURANS\n\nNama: ${nama}\nNo. Whatsapp: ${wasap}\nJenis Kenderaan: ${jenis}\nCoverage: ${coverage}\nCover Cermin: ${coverCermin}\nBanjir: ${banj}\nTowing: ${tow}\nRoadtax Digital: ${digital}`;
-  statusEl.textContent='Membuka WhatsApp...';
-  window.open('https://wa.me/60179699926?text='+encodeURIComponent(msg),'_blank');
-  setTimeout(()=>statusEl.textContent='Selesai. WhatsApp dibuka.',1200);
+  const normalized=document.getElementById("wasap").value.replace(/\D/g,'');
+  const phone=normalized.startsWith("0")?"60"+normalized.slice(1):normalized;
+
+  const msg=
+`BORANG SEBUTHARGA INSURANS
+
+Nama: ${nama.value}
+No. Whatsapp: ${wasap.value}
+Jenis Kenderaan: ${jenis.value}
+Coverage: ${coverage.value}
+Cover Cermin: ${(cermin.parentElement.style.display=='none')?'Tiada':cermin.value}
+Banjir: ${(banjir.parentElement.style.display=='none')?'Tiada':banjir.value}
+Towing: ${(towing.parentElement.style.display=='none')?'Tiada':towing.value}
+Roadtax Digital: ${digital.value}`;
+
+  statusEl.textContent="Membuka WhatsApp...";
+  window.open("https://wa.me/"+WHATSAPP_RECEIVER+"?text="+encodeURIComponent(msg),'_blank');
+  setTimeout(()=>statusEl.textContent="Selesai. WhatsApp dibuka.",1200);
 });
 
-// === Minimal Exit Intent (desktop + mobile small detection) ===
-(function(){
-  const popup = document.getElementById('exitMinimal');
-  const closeBtn = document.getElementById('exitMinimalClose');
-  let shown = false;
+/* EXIT POPUP LOGIC */
+let exitShown = false;
 
-  function showPopup(){
-    if(shown || !popup) return;
-    shown = true;
-    popup.classList.add('show');
-    popup.setAttribute('aria-hidden','false');
-  }
-  function hidePopup(){
-    if(!popup) return;
-    popup.classList.remove('show');
-    popup.setAttribute('aria-hidden','true');
-  }
+function showExitPopup() {
+  if (exitShown) return;
+  exitShown = true;
+  document.getElementById("exitOverlay").classList.add("show");
+  document.getElementById("exitPopup").classList.add("show");
+}
 
-  // Desktop: mouse leaves viewport at top
-  document.addEventListener('mouseout', function(e){
-    if(e.clientY < 10) showPopup();
-  });
+// Desktop exit intent
+document.addEventListener("mouseout", function(e) {
+  if (e.clientY < 40) showExitPopup();
+});
 
-  // Mobile: detect quick upward scroll near top
-  let lastScroll = window.scrollY || 0;
-  let lastTime = Date.now();
-  window.addEventListener('scroll', function(){
-    const now = Date.now();
-    const current = window.scrollY || 0;
-    const diff = lastScroll - current;
-    const dt = Math.max(now - lastTime, 1);
-    const speed = diff / dt; // px per ms
-    // if user scrolls up fast and is near top, show popup (minimal)
-    if(speed > 0.35 && current < 150) showPopup();
-    lastScroll = current; lastTime = now;
-  }, {passive:true});
+// Mobile exit intent (scroll up fast)
+let lastScroll = 0;
+document.addEventListener("touchmove", function() {
+  let current = window.scrollY;
+  if (current < lastScroll - 35) showExitPopup();
+  lastScroll = current;
+});
 
-  // Optional: intercept mobile back (soft)
-  let popped = false;
-  window.addEventListener('popstate', function(){
-    if(!shown){
-      showPopup();
-      history.pushState(null, null, location.href);
-    }
-    popped = true;
-  });
-  try { history.pushState(null, null, location.href); } catch(e){}
-
-  // close handlers
-  if(closeBtn) closeBtn.addEventListener('click', hidePopup);
-  // also hide if user clicks outside popup (very minimal)
-  document.addEventListener('click', function(e){
-    if(!popup) return;
-    if(popup.classList.contains('show')){
-      const rect = popup.getBoundingClientRect();
-      // click outside?
-      if(e.clientX < rect.left || e.clientX > rect.right || e.clientY < rect.top || e.clientY > rect.bottom){
-        hidePopup();
-      }
-    }
-  });
-})();
+// Close popup
+document.getElementById("exitCloseBtn").onclick = function () {
+  document.getElementById("exitOverlay").classList.remove("show");
+  document.getElementById("exitPopup").classList.remove("show");
+};
 </script>
 
 </body>
