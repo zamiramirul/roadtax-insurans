@@ -1,249 +1,308 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ms">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Renew Roadtax & Insurans • Servis Paling Laju</title>
-
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Renew Roadtax & Insurans — Semak Sekarang</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
+  :root{
+    --accent1:#0066ff; --accent2:#00c2ff; --green:#25D366; --muted:#6b7280;
+    --card-bg:rgba(255,255,255,0.98);
+    --maxw:980px;
+  }
+  *{box-sizing:border-box}
+  body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial; margin:0; color:#0f172a; background:linear-gradient(180deg,#f4f7fb,#fbfdff)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:20px}
 
-/* GLOBAL */
-body {
-    margin: 0;
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: #f3f6fb;
-    color: #222;
-    line-height: 1.6;
-}
+  /* HEADER */
+  header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand img{width:56px;height:56px;border-radius:12px;object-fit:cover}
+  .brand h1{margin:0;font-size:18px}
+  .brand p{margin:0;font-size:12px;color:var(--muted)}
 
-/* HERO SECTION */
-.hero {
-    background: linear-gradient(135deg, #0066ff, #00c2ff);
-    color: white;
-    padding: 80px 25px 100px;
-    text-align: center;
-}
-.hero h1 {
-    font-size: 40px;
-    margin: 0 0 15px;
-    font-weight: 800;
-}
-.hero p {
-    font-size: 18px;
-    opacity: 0.95;
-    margin: 0;
-}
+  /* HERO / BANNER */
+  .hero{
+    margin-top:10px;
+    border-radius:16px;
+    overflow:hidden;
+    position:relative;
+    min-height:260px;
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(2,6,23,0.18), rgba(2,6,23,0.06));}
+  .hero-inner{position:relative;z-index:2;padding:36px 18px;text-align:center;color:white;max-width:820px}
+  .hero h2{margin:0;font-size:34px;line-height:1.05;font-weight:800}
+  .hero p{margin:10px 0 0 0;font-size:16px;opacity:0.95}
 
-/* FLOATING CARD */
-.floating-card {
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 18px;
-    padding: 25px;
-    max-width: 750px;
-    margin: -60px auto 30px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-    border: 1px solid rgba(255,255,255,0.5);
-}
+  /* floating card (form) */
+  .floating{max-width:920px;margin:-70px auto 24px;padding:18px;border-radius:14px;background:var(--card-bg);box-shadow:0 18px 40px rgba(2,6,23,0.12);border:1px solid rgba(2,6,23,0.04);display:grid;grid-template-columns:1fr 360px;gap:18px}
+  @media (max-width:900px){ .floating{grid-template-columns:1fr;padding:16px} .hero h2{font-size:26px} }
 
-/* SECTION */
-.section {
-    max-width: 750px;
-    margin: auto;
-    padding: 25px;
-}
+  /* left */
+  .left h3{margin:0 0 8px 0;font-size:20px}
+  .left p{margin:0;color:var(--muted)}
+  .features{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+  .pill{background:#f1f7ff;color:var(--accent1);padding:8px 12px;border-radius:999px;font-weight:600;font-size:13px}
 
-/* CARDS */
-.card {
-    background: white;
-    padding: 25px;
-    margin-bottom: 25px;
-    border-radius: 16px;
-    border: 1px solid #e5e9f0;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
-}
+  /* form */
+  form{display:flex;flex-direction:column;gap:10px}
+  label{font-size:13px;color:var(--muted)}
+  input,select,textarea{padding:12px;border-radius:10px;border:1px solid #e6e9ef;font-size:15px}
+  .row{display:flex;gap:10px}
+  .row .col{flex:1}
+  .btn{background:var(--green);color:#fff;padding:12px;border-radius:10px;border:0;font-weight:700;cursor:pointer;text-align:center}
+  .btn.secondary{background:transparent;color:var(--accent1);border:1px solid rgba(0,102,255,0.12)}
 
-/* HEADINGS */
-.section h2, .card h2 {
-    font-size: 24px;
-    margin-bottom: 15px;
-    font-weight: 700;
-}
+  /* small notes */
+  .small{font-size:13px;color:var(--muted)}
+  .trust{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px}
+  .trust img{height:28px;opacity:0.95}
 
-/* BADGES */
-.badges {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-.badge {
-    background: #e9f3ff;
-    padding: 8px 14px;
-    border-radius: 20px;
-    font-size: 14px;
-    font-weight: bold;
-    color: #0a84ff;
-}
+  /* stats & testimonials */
+  .stats{display:flex;gap:12px;margin-top:12px}
+  .stat{flex:1;background:#fff;padding:12px;border-radius:10px;text-align:center;border:1px solid #f0f4ff}
+  .stat b{display:block;font-size:20px;color:var(--accent1)}
+  .testi{margin-top:10px}
 
-/* BENEFIT LIST */
-ul {
-    padding-left: 20px;
-}
-ul li {
-    margin-bottom: 8px;
-    font-size: 16px;
-}
+  /* floating bottom CTA for mobile */
+  .floating-cta{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;width:94%;max-width:960px;background:var(--green);color:white;padding:12px 16px;border-radius:12px;text-align:center;box-shadow:0 12px 28px rgba(37,211,102,0.24);display:none;font-weight:800}
+  @media (max-width:780px){ .floating-cta{display:block} }
 
-/* HIGHLIGHT BOX */
-.highlight {
-    background: #fff7db;
-    padding: 12px 15px;
-    border-left: 5px solid #ffbb00;
-    border-radius: 8px;
-    margin-bottom: 18px;
-}
+  footer{margin-top:30px;padding:20px;text-align:center;color:var(--muted);font-size:13px}
 
-/* SOCIAL PROOF */
-.stats {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-.stat-box {
-    text-align: center;
-    flex: 1;
-}
-.stat-number {
-    font-size: 28px;
-    font-weight: 800;
-    color: #0a84ff;
-}
-.stat-text {
-    font-size: 14px;
-    opacity: 0.7;
-}
-
-/* CTA BUTTON */
-.cta-btn {
-    display: block;
-    background: #25D366;
-    color: white;
-    padding: 18px;
-    border-radius: 14px;
-    text-align: center;
-    font-size: 20px;
-    text-decoration: none;
-    font-weight: bold;
-    margin-top: 20px;
-    box-shadow: 0 4px 18px rgba(37,211,102,0.35);
-}
-
-/* FLOATING CTA (BOTTOM FIXED) */
-.cta-floating {
-    position: fixed;
-    bottom: 18px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 92%;
-    max-width: 700px;
-    background: #25D366;
-    color: white;
-    padding: 14px;
-    border-radius: 14px;
-    text-align: center;
-    font-size: 18px;
-    text-decoration: none;
-    font-weight: 700;
-    box-shadow: 0 6px 20px rgba(37,211,102,0.4);
-}
-
-/* FOOTER */
-.footer {
-    text-align: center;
-    font-size: 14px;
-    color: #888;
-    padding: 25px;
-    margin-top: 40px;
-}
-
+/* helpers */
+.icon{width:18px;height:18px;vertical-align:middle;margin-right:8px}
 </style>
 </head>
-
 <body>
+<div class="wrap">
 
-<!-- HERO -->
-<div class="hero">
-    <h1>Renew Roadtax & Insurans</h1>
-    <p>Pantas • Murah • Trusted • Siap Dalam Beberapa Minit</p>
-</div>
+  <!-- CHANGE THESE 3 VALUES -->
+  <!-- 1) Ganti nombor WA di bawah (format untuk wa.me: '60' + nombor tanpa + atau 0, contoh: 60123456789) -->
+  <!-- 2) Ganti LOGO_URL dengan link logo korang (png/svg) -->
+  <!-- 3) Ganti BANNER_URL dengan link gambar hero/banner -->
+  <script>
+    const WA_NUMBER = '60123456789'; // <<--- GANTI SINI (contoh: 60123456789)
+    const LOGO_URL = 'https://images.unsplash.com/photo-1602526439184-2a4e0f1d0b8c?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=example'; // <<--- GANTI LOGO
+    const BANNER_URL = 'https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=example'; // <<--- GANTI BANNER
+  </script>
 
-<!-- FLOATING HERO CARD -->
-<div class="floating-card">
-    <h2>🔥 Semak Harga Roadtax & Insurans Anda Sekarang</h2>
-    <p>Kami bantu anda dapatkan harga paling berpatutan — kereta & motor.</p>
-
-    <div class="badges">
-        <div class="badge">Servis 7 Hari</div>
-        <div class="badge">10,000+ Pelanggan</div>
-        <div class="badge">Lowest Rate</div>
-        <div class="badge">Trusted Seller</div>
+  <!-- header brand -->
+  <header>
+    <div class="brand">
+      <img id="logoImg" src="" alt="Logo">
+      <div>
+        <h1>Renew Express</h1>
+        <p>Roadtax & Insurans — Laju Gila</p>
+      </div>
     </div>
-</div>
+    <div class="small">Hotline: <strong id="hotline">012-3456789</strong></div>
+  </header>
 
-<div class="section">
+  <!-- hero -->
+  <section class="hero" id="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-inner">
+      <h2>Weh… Roadtax & Insurans — Settle Dalam Beberapa Minit</h2>
+      <p>Tak payah beratur, tak payah pening. Kita urus sampai siap — e-cover note terus dihantar ke WhatsApp.</p>
+    </div>
+  </section>
 
-    <!-- BENEFITS -->
-    <div class="card">
-        <h2>Kenapa Ribuan Pelanggan Pilih Kami?</h2>
-        <ul>
-            <li>Roadtax siap dalam **5–10 minit** (bergantung kawasan)</li>
-            <li>Pilihan insurans ikut bajet</li>
-            <li>Semakan + konsultasi percuma</li>
-            <li>Support WhatsApp setiap hari</li>
-            <li>Boleh renew kereta & motor</li>
-        </ul>
+  <!-- floating card with form -->
+  <section class="floating" aria-labelledby="formTitle">
+    <div class="left">
+      <h3 id="formTitle">Semak Harga – Cepat & Percuma</h3>
+      <p class="small">Isi maklumat ringkas, kami akan semak & beri pilihan insurans terbaik ikut NCD anda.</p>
 
-        <div class="stats">
-            <div class="stat-box">
-                <div class="stat-number">10k+</div>
-                <div class="stat-text">Renew Dilakukan</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-number">5 ★</div>
-                <div class="stat-text">Rating Pelanggan</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-number">7 Hari</div>
-                <div class="stat-text">Servis Dibuka</div>
-            </div>
+      <div class="features">
+        <div class="pill">🚀 5–10 minit</div>
+        <div class="pill">📄 E-Cover Note</div>
+        <div class="pill">💸 Jimat ikut NCD</div>
+        <div class="pill">🔒 Selamat & Terpercaya</div>
+      </div>
+
+      <div class="trust">
+        <img src="https://dummyimage.com/80x28/fff/aaa.png&text=SSM" alt="SSM">
+        <img src="https://dummyimage.com/90x28/fff/aaa.png&text=Panel+Insurans" alt="Panel">
+        <img src="https://dummyimage.com/80x28/fff/aaa.png&text=5%2B+Years" alt="Years">
+      </div>
+
+      <div class="stats" style="margin-top:14px">
+        <div class="stat">
+          <b>10k+</b>
+          <span class="small">Renew Completed</span>
         </div>
-    </div>
-
-    <!-- FORM INSTRUCTION -->
-    <div class="card">
-        <h2>📄 Hantar Maklumat Untuk Semakan Pantas</h2>
-
-        <div class="highlight">
-            Maklumat diperlukan: Nama penuh, No IC, No Plat, Model & Spec kenderaan.
+        <div class="stat">
+          <b>4.9★</b>
+          <span class="small">Avg Rating</span>
         </div>
+        <div class="stat">
+          <b>7 Hari</b>
+          <span class="small">Support</span>
+        </div>
+      </div>
 
-        <p>Kami semak harga insurans terbaik + roadtax anda dalam beberapa minit sahaja.</p>
-
-        <a class="cta-btn" href="https://wa.me/60123456789" target="_blank">
-            WhatsApp Untuk Semakan 🔥
-        </a>
+      <div class="testi" style="margin-top:14px">
+        <div class="card" style="padding:12px;border-radius:12px">
+          <strong>“Gila laju weh, aku ingat kena beratur. Siap 10 minit!”</strong>
+          <div class="small" style="margin-top:6px">— Hafiz, KL</div>
+        </div>
+      </div>
     </div>
 
+    <aside>
+      <div class="card" style="padding:18px">
+        <h3 style="margin-top:0">Borang Semakan Pantas</h3>
+
+        <form id="waForm" onsubmit="return submitForm(event)">
+          <label for="name">Nama Penuh *</label>
+          <input id="name" name="name" type="text" placeholder="Contoh: Ahmad bin Ali" required>
+
+          <label for="ic">No IC (last 4) — optional</label>
+          <input id="ic" name="ic" type="text" placeholder="(contoh: 1234)">
+
+          <label for="plate">No Plat Kenderaan *</label>
+          <input id="plate" name="plate" type="text" placeholder="Contoh: WQA1234" required>
+
+          <div class="row">
+            <div class="col">
+              <label for="type">Jenis Kenderaan</label>
+              <select id="type" name="type">
+                <option value="Kereta">Kereta</option>
+                <option value="Motor">Motor</option>
+              </select>
+            </div>
+            <div class="col">
+              <label for="model">Model / Tahun</label>
+              <input id="model" name="model" type="text" placeholder="Contoh: Perodua Myvi 2016">
+            </div>
+          </div>
+
+          <label for="phone">No Telefon (WhatsApp) *</label>
+          <input id="phone" name="phone" type="tel" placeholder="Contoh: 0123456789" required>
+
+          <label for="note">Catatan (optional)</label>
+          <textarea id="note" name="note" rows="2" placeholder="Permintaan khas / waktu sesuai dihubungi" style="resize:vertical;padding:10px;border-radius:8px;border:1px solid #e6e9ef"></textarea>
+
+          <div style="display:flex;gap:8px;margin-top:10px">
+            <button type="submit" class="btn">WhatsApp & Semak Harga</button>
+            <button type="button" class="btn secondary" onclick="previewMessage()">Preview Mesej</button>
+          </div>
+
+          <div id="formHint" class="small" style="margin-top:10px">Kami akan gunakan maklumat ini untuk semak dan reply melalui WhatsApp. Data anda selamat.</div>
+        </form>
+      </div>
+    </aside>
+  </section>
+
+  <footer>
+    <div class="small">© 2025 Renew Express • SSM: 0123456-X • Privacy Policy</div>
+  </footer>
+
+  <!-- mobile floating CTA -->
+  <a id="mobileCTA" class="floating-cta" href="#" onclick="document.getElementById('name').focus();return false" style="display:none">WhatsApp Untuk Semakan Pantas 🚀</a>
 </div>
 
-<!-- FLOATING CTA -->
-<a class="cta-floating" href="https://wa.me/60123456789" target="_blank">
-    WhatsApp Untuk Semakan Pantas 🚀
-</a>
+<script>
+  // --- runtime: set images/branding ---
+  (function(){
+    // set images from top script vars
+    try {
+      document.getElementById('logoImg').src = LOGO_URL;
+      document.getElementById('hero').style.backgroundImage = 'linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.06)), url(\"'+BANNER_URL+'\")';
+      // set visible hotline text if WA number is set in variable
+      if(WA_NUMBER && WA_NUMBER.length>6){
+        // format display localish for header (not used for wa link)
+        const display = WA_NUMBER.replace(/^60?/,'').replace(/^0/,'');
+        document.getElementById('hotline').textContent = '+' + (WA_NUMBER.startsWith('60')? '' : '') + WA_NUMBER;
+      }
+    } catch(e){}
+    // show mobile CTA on small screens
+    if(window.innerWidth <= 780) document.getElementById('mobileCTA').style.display = 'block';
+  })();
 
-<div class="footer">
-    © 2025 Renew Roadtax & Insurans • Semua Hak Terpelihara.
-</div>
+  // --- helpers ---
+  function sanitizePhoneForWa(raw){
+    if(!raw) return '';
+    raw = raw.toString().trim();
+    // remove spaces, parentheses, dashes, plus
+    raw = raw.replace(/[+\s\-\(\)]/g,'');
+    // if starts with 0 -> remove leading 0 and add country code 60
+    if(raw.startsWith('0')) raw = '60' + raw.slice(1);
+    // if starts with '60' ok; if starts with '6' maybe '6...' leave
+    if(raw.startsWith('+')) raw = raw.slice(1);
+    // if user already put country code without plus (eg 6012...), keep
+    return raw;
+  }
 
+  function buildWaMessage(data){
+    // create human readable message
+    let msg = `Hi, saya nak semak harga renew Roadtax & Insurans.%0A%0A`;
+    msg += `Nama: ${encodeURIComponent(data.name)}%0A`;
+    if(data.ic) msg += `No IC (partial): ${encodeURIComponent(data.ic)}%0A`;
+    msg += `No Plat: ${encodeURIComponent(data.plate)}%0A`;
+    msg += `Jenis: ${encodeURIComponent(data.type)}%0A`;
+    if(data.model) msg += `Model: ${encodeURIComponent(data.model)}%0A`;
+    msg += `No Telefon: ${encodeURIComponent(data.phone)}%0A`;
+    if(data.note) msg += `%0ACatatan: ${encodeURIComponent(data.note)}%0A`;
+    msg += `%0A(Sila berikan anggaran NCD jika ada)`;
+    return msg;
+  }
+
+  function submitForm(e){
+    e && e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const ic = document.getElementById('ic').value.trim();
+    const plate = document.getElementById('plate').value.trim();
+    const type = document.getElementById('type').value;
+    const model = document.getElementById('model').value.trim();
+    const phoneRaw = document.getElementById('phone').value.trim();
+    const note = document.getElementById('note').value.trim();
+
+    if(!name || !plate || !phoneRaw){
+      alert('Sila lengkapkan Nama, No Plat dan No Telefon terlebih dahulu.');
+      return false;
+    }
+
+    const phoneForWa = sanitizePhoneForWa(phoneRaw);
+    if(phoneForWa.length < 8){ alert('Sila masukkan nombor telefon yang sah.'); return false; }
+
+    // compile data
+    const data = {name,ic,plate,type,model,phone:phoneRaw,note};
+    const message = buildWaMessage(data);
+
+    // WA target number comes from WA_NUMBER constant set at top.
+    // Ensure WA_NUMBER is like '60123456789' (no +)
+    let target = WA_NUMBER || '';
+    target = target.toString().replace(/[^\d]/g,''); // remove non digits
+    if(!target){ alert('Sila tetapkan nombor WhatsApp kami di code (WA_NUMBER).'); return false; }
+
+    // open wa.me - use target number (our business) and message
+    const waUrl = `https://wa.me/${target}?text=${message}`;
+    window.open(waUrl, '_blank');
+    return false;
+  }
+
+  function previewMessage(){
+    const name = document.getElementById('name').value.trim();
+    const ic = document.getElementById('ic').value.trim();
+    const plate = document.getElementById('plate').value.trim();
+    const type = document.getElementById('type').value;
+    const model = document.getElementById('model').value.trim();
+    const phoneRaw = document.getElementById('phone').value.trim();
+    const note = document.getElementById('note').value.trim();
+
+    const data = {name,ic,plate,type,model,phone:phoneRaw,note};
+    const humanMsg = `Preview Mesej:\\n\\nNama: ${name}\\nNo IC (partial): ${ic}\\nNo Plat: ${plate}\\nJenis: ${type}\\nModel: ${model}\\nNo Telefon: ${phoneRaw}\\n\\nCatatan: ${note}`;
+    alert(humanMsg);
+  }
+</script>
 </body>
 </html>
