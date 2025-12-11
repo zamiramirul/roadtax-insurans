@@ -3,163 +3,247 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Renew Roadtax & Insurans • Servis Pantas</title>
+<title>Renew Roadtax & Insurans • Servis Paling Laju</title>
 
 <style>
+
+/* GLOBAL */
 body {
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  background: #f5f7fa;
-  color: #333;
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f3f6fb;
+    color: #222;
+    line-height: 1.6;
 }
 
-/* HEADER HERO */
+/* HERO SECTION */
 .hero {
-  background: linear-gradient(135deg, #0a84ff, #0063d6);
-  padding: 60px 25px;
-  text-align: center;
-  color: white;
+    background: linear-gradient(135deg, #0066ff, #00c2ff);
+    color: white;
+    padding: 80px 25px 100px;
+    text-align: center;
 }
 .hero h1 {
-  font-size: 36px;
-  margin-bottom: 10px;
+    font-size: 40px;
+    margin: 0 0 15px;
+    font-weight: 800;
 }
 .hero p {
-  font-size: 18px;
-  opacity: 0.9;
+    font-size: 18px;
+    opacity: 0.95;
+    margin: 0;
 }
 
-/* SECTION CONTAINER */
+/* FLOATING CARD */
+.floating-card {
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 18px;
+    padding: 25px;
+    max-width: 750px;
+    margin: -60px auto 30px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    border: 1px solid rgba(255,255,255,0.5);
+}
+
+/* SECTION */
 .section {
-  max-width: 750px;
-  margin: auto;
-  padding: 25px;
+    max-width: 750px;
+    margin: auto;
+    padding: 25px;
 }
 
-/* CARD */
+/* CARDS */
 .card {
-  background: white;
-  padding: 25px;
-  border-radius: 15px;
-  margin-bottom: 25px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-  border: 1px solid #e9eef5;
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 16px;
+    border: 1px solid #e5e9f0;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
 }
 
-/* BENEFITS LIST */
-ul {
-  padding-left: 20px;
-}
-ul li {
-  margin-bottom: 8px;
-  font-size: 16px;
+/* HEADINGS */
+.section h2, .card h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    font-weight: 700;
 }
 
 /* BADGES */
 .badges {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 .badge {
-  background: #e9f4ff;
-  color: #0a84ff;
-  padding: 8px 14px;
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: bold;
+    background: #e9f3ff;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #0a84ff;
+}
+
+/* BENEFIT LIST */
+ul {
+    padding-left: 20px;
+}
+ul li {
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+/* HIGHLIGHT BOX */
+.highlight {
+    background: #fff7db;
+    padding: 12px 15px;
+    border-left: 5px solid #ffbb00;
+    border-radius: 8px;
+    margin-bottom: 18px;
+}
+
+/* SOCIAL PROOF */
+.stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.stat-box {
+    text-align: center;
+    flex: 1;
+}
+.stat-number {
+    font-size: 28px;
+    font-weight: 800;
+    color: #0a84ff;
+}
+.stat-text {
+    font-size: 14px;
+    opacity: 0.7;
 }
 
 /* CTA BUTTON */
-.cta {
-  display: block;
-  text-align: center;
-  background: #25D366;
-  padding: 16px;
-  border-radius: 12px;
-  font-size: 20px;
-  text-decoration: none;
-  color: white;
-  margin-top: 25px;
-  font-weight: bold;
-  box-shadow: 0 4px 12px rgba(37,211,102,0.3);
+.cta-btn {
+    display: block;
+    background: #25D366;
+    color: white;
+    padding: 18px;
+    border-radius: 14px;
+    text-align: center;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 20px;
+    box-shadow: 0 4px 18px rgba(37,211,102,0.35);
 }
 
-/* INFO HIGHLIGHT */
-.highlight {
-  background: #fff8e1;
-  border-left: 5px solid #ffbf00;
-  padding: 12px 15px;
-  border-radius: 10px;
-  margin-bottom: 15px;
-  font-size: 15px;
+/* FLOATING CTA (BOTTOM FIXED) */
+.cta-floating {
+    position: fixed;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+    max-width: 700px;
+    background: #25D366;
+    color: white;
+    padding: 14px;
+    border-radius: 14px;
+    text-align: center;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 6px 20px rgba(37,211,102,0.4);
 }
 
 /* FOOTER */
 .footer {
-  text-align: center;
-  font-size: 14px;
-  color: #888;
-  padding: 20px;
-  margin-top: 30px;
+    text-align: center;
+    font-size: 14px;
+    color: #888;
+    padding: 25px;
+    margin-top: 40px;
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- HERO SECTION -->
+<!-- HERO -->
 <div class="hero">
-  <h1>Renew Roadtax & Insurans</h1>
-  <p>Servis Laju • Trusted • Harga Berpatutan • Support WhatsApp</p>
+    <h1>Renew Roadtax & Insurans</h1>
+    <p>Pantas • Murah • Trusted • Siap Dalam Beberapa Minit</p>
 </div>
 
-
-<!-- MAIN CONTENT -->
-<div class="section">
-
-  <div class="card">
-    <h2>🔥 Kenapa Ramai Pilih Kami?</h2>
-    <ul>
-      <li>Roadtax siap dalam **5–10 minit**</li>
-      <li>Insurans ikut bajet – banyak pilihan</li>
-      <li>Semakan & konsultasi **100% percuma**</li>
-      <li>Boleh renew untuk kereta & motor</li>
-      <li>Servis setiap hari 9am – 10pm</li>
-    </ul>
+<!-- FLOATING HERO CARD -->
+<div class="floating-card">
+    <h2>🔥 Semak Harga Roadtax & Insurans Anda Sekarang</h2>
+    <p>Kami bantu anda dapatkan harga paling berpatutan — kereta & motor.</p>
 
     <div class="badges">
-      <div class="badge">Trusted Seller</div>
-      <div class="badge">Fast Service</div>
-      <div class="badge">Lowest Rate</div>
-      <div class="badge">10,000+ Renew</div>
+        <div class="badge">Servis 7 Hari</div>
+        <div class="badge">10,000+ Pelanggan</div>
+        <div class="badge">Lowest Rate</div>
+        <div class="badge">Trusted Seller</div>
     </div>
-  </div>
+</div>
 
+<div class="section">
 
-  <div class="card">
-    <h2>📄 Hantar Maklumat Untuk Semakan</h2>
+    <!-- BENEFITS -->
+    <div class="card">
+        <h2>Kenapa Ribuan Pelanggan Pilih Kami?</h2>
+        <ul>
+            <li>Roadtax siap dalam **5–10 minit** (bergantung kawasan)</li>
+            <li>Pilihan insurans ikut bajet</li>
+            <li>Semakan + konsultasi percuma</li>
+            <li>Support WhatsApp setiap hari</li>
+            <li>Boleh renew kereta & motor</li>
+        </ul>
 
-    <div class="highlight">
-      Masukkan: Nama penuh, No IC, No Plat, Model & Spec kenderaan.
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-number">10k+</div>
+                <div class="stat-text">Renew Dilakukan</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">5 ★</div>
+                <div class="stat-text">Rating Pelanggan</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">7 Hari</div>
+                <div class="stat-text">Servis Dibuka</div>
+            </div>
+        </div>
     </div>
 
-    <p>Kami akan semak kadar insurans terbaik + roadtax dalam masa beberapa minit.</p>
+    <!-- FORM INSTRUCTION -->
+    <div class="card">
+        <h2>📄 Hantar Maklumat Untuk Semakan Pantas</h2>
 
-    <a class="cta" href="https://wa.me/60123456789" target="_blank">
-      WhatsApp Untuk Semakan Pantas 🚀
-    </a>
-  </div>
+        <div class="highlight">
+            Maklumat diperlukan: Nama penuh, No IC, No Plat, Model & Spec kenderaan.
+        </div>
+
+        <p>Kami semak harga insurans terbaik + roadtax anda dalam beberapa minit sahaja.</p>
+
+        <a class="cta-btn" href="https://wa.me/60123456789" target="_blank">
+            WhatsApp Untuk Semakan 🔥
+        </a>
+    </div>
 
 </div>
 
+<!-- FLOATING CTA -->
+<a class="cta-floating" href="https://wa.me/60123456789" target="_blank">
+    WhatsApp Untuk Semakan Pantas 🚀
+</a>
 
-<!-- FOOTER -->
 <div class="footer">
-  © 2025 Renew Roadtax & Insurans — Semua Hak Terpelihara.
+    © 2025 Renew Roadtax & Insurans • Semua Hak Terpelihara.
 </div>
 
 </body>
 </html>
-
