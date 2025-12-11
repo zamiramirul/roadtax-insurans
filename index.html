@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="ms">
 <head>
 <meta charset="UTF-8">
@@ -46,24 +46,107 @@ p{text-align:center;color:var(--muted);margin-bottom:10px;}
 .testimonial h4{color:var(--accent);margin-bottom:8px;}
 .testimonial p{color:var(--muted);font-size:14px;}
 
+/* --- NEW: Live Visitor --- */
+.live-visitor{
+  text-align:center;
+  font-weight:700;
+  color:#4ade80;
+  font-size:15px;
+  margin-top:10px;
+}
+
+/* --- NEW: Urgency Bar --- */
+.urgency-box{
+  background:#0c132e;
+  padding:15px;
+  border-radius:14px;
+  margin:20px auto;
+  max-width:500px;
+  text-align:center;
+  border:1px solid rgba(250,204,21,0.3);
+}
+.urgency-title{color:var(--accent);font-size:15px;margin-bottom:8px;font-weight:800;}
+.urgency-bar{
+  width:100%;height:14px;background:#222;border-radius:20px;overflow:hidden;
+}
+.urgency-fill{
+  height:100%;width:62%;background:linear-gradient(90deg,#facc15,#f59e0b);
+}
+
 /* WhatsApp Form */
 .wrap{max-width:500px;margin:40px auto;}
 label{display:block;margin-top:12px;margin-bottom:6px;font-weight:700;color:var(--accent);font-size:15px;text-align:center;}
 .select-wrap{position:relative;width:100%;}
 .select-wrap::after{content:"▼";position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--accent);}
-select,input{width:100%;height:50px;padding:0 16px;font-size:15px;border-radius:var(--radius);border:2px solid rgba(250,204,21,0.25);outline:none;background:var(--primary);color:var(--accent);font-weight:700;text-align:center;appearance:none;box-sizing:border-box;transition:0.2s;}
+select,input{width:100%;height:50px;padding:0 16px;font-size:15px;border-radius:var(--radius);border:2px solid rgba(250,204,21,0.25);outline:none;background:var(--primary);color:var(--accent);font-weight:700;text-align:center;appearance:none;transition:0.2s;}
 select:focus,input:focus{border-color:var(--accent);box-shadow:0 0 8px rgba(250,204,21,0.4);}
 input::placeholder{color:rgba(250,204,21,0.45);}
 button{margin-top:25px;width:100%;padding:15px;border:none;font-size:18px;font-weight:900;border-radius:14px;background:linear-gradient(135deg,#facc15,#f59e0b);color:#000;cursor:pointer;box-shadow:0 10px 20px rgba(250,204,21,0.35);transition:0.25s;}
-button:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(250,204,21,0.45);}
-.status{margin-top:10px;text-align:center;color:var(--accent);font-weight:700;min-height:20px;}
+button:hover{transform:translateY(-2px);}
 
 /* Floating WhatsApp CTA */
-.cta-floating{position:fixed;bottom:20px;right:20px;background:var(--green);color:#fff;padding:12px 18px;border-radius:50px;font-weight:700;box-shadow:0 6px 12px rgba(0,0,0,0.2);z-index:999;text-align:center;}
-.cta-floating:hover{transform:translateY(-2px);transition:0.2s;}
+.cta-floating{position:fixed;bottom:20px;right:20px;background:var(--green);color:#fff;padding:12px 18px;border-radius:50px;font-weight:700;box-shadow:0 6px 12px rgba(0,0,0,0.2);z-index:999;}
 
-/* Media */
-@media(max-width:600px){.hero-inner h1{font-size:22px;}.hero-inner p{font-size:14px;}.benefits,.steps{flex-direction:column;}}
+/* Notification Popup */
+.noti-popup{
+  position:fixed;
+  left:20px;
+  bottom:20px;
+  background:#0b122b;
+  padding:14px 18px;
+  border-radius:14px;
+  border:1px solid rgba(250,204,21,0.3);
+  color:var(--accent);
+  font-size:14px;
+  font-weight:700;
+  z-index:9999;
+  box-shadow:0 0 12px rgba(0,0,0,0.4);
+  display:none;
+}
+
+/* --- EXIT INTENT POPUP --- */
+.exit-popup{
+  position:fixed;
+  top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,0.75);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:99999;
+  display:none;
+}
+.exit-box{
+  background:var(--card);
+  padding:25px;
+  width:90%;
+  max-width:360px;
+  text-align:center;
+  border-radius:16px;
+  border:1px solid var(--accent);
+}
+.exit-box h3{color:var(--accent);margin-bottom:12px;font-size:20px;font-weight:800;}
+.exit-box p{color:var(--muted);margin-bottom:18px;}
+.exit-btn{
+  display:block;
+  background:var(--green);
+  padding:12px;
+  border-radius:10px;
+  font-weight:800;
+  color:#fff;
+  text-align:center;
+}
+.exit-close{
+  margin-top:14px;
+  font-size:13px;
+  color:var(--muted);
+  cursor:pointer;
+}
+
+@media(max-width:600px){
+  .hero-inner h1{font-size:22px;}
+  .hero-inner p{font-size:14px;}
+  .benefits,.steps{flex-direction:column;}
+}
 </style>
 </head>
 <body>
@@ -83,11 +166,14 @@ button:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(250,204,21,0
   <span class="badge">Fast & Easy Processing</span>
 </div>
 
+<!-- NEW Live Visitor -->
+<div class="live-visitor" id="liveVisitor">🔵 8 pelawat sedang melihat halaman ini</div>
+
 <!-- Benefits -->
 <section>
 <h2>Kelebihan Servis Kami</h2>
 <div class="benefits">
-  <div class="benefit"><h3>🚀 Proses Pantas & Tanpa Beratur</h3><p>e-Cover dihantar terus ke WhatsApp dalam 5 minit sahaja.</p></div>
+  <div class="benefit"><h3>🚀 Proses Pantas</h3><p>e-Cover dihantar terus ke WhatsApp dalam 5 minit sahaja.</p></div>
   <div class="benefit"><h3>🛡 Perlindungan Lengkap</h3><p>Pilih 1st/3rd Party, Cover Cermin, Banjir & Unlimited Towing + PA.</p></div>
   <div class="benefit"><h3>📲 Mudah & Digital</h3><p>Semua selesai tanpa perlu ke pejabat, pantas & selamat.</p></div>
 </div>
@@ -97,10 +183,10 @@ button:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(250,204,21,0
 <section>
 <h2>Langkah Mudah</h2>
 <div class="steps">
-  <div class="step"><h4>1️⃣ Pilih Kenderaan & Coverage</h4><p>Sesuaikan dengan keperluan kereta/motosikal anda.</p></div>
-  <div class="step"><h4>2️⃣ Isi Borang WhatsApp</h4><p>Borang ringkas tapi lengkap, hantar terus ke WhatsApp.</p></div>
-  <div class="step"><h4>3️⃣ Terima e-Cover</h4><p>Dokumen rasmi dihantar terus ke WhatsApp anda.</p></div>
-  <div class="step"><h4>4️⃣ Enjoy Servis Premium</h4><p>Proses cepat, selamat, dan tanpa beratur.</p></div>
+  <div class="step"><h4>1️⃣ Pilih Kenderaan & Coverage</h4><p>Sesuaikan mengikut keperluan anda.</p></div>
+  <div class="step"><h4>2️⃣ Isi Borang WhatsApp</h4><p>Borang ringkas & terus hantar.</p></div>
+  <div class="step"><h4>3️⃣ Terima e-Cover</h4><p>Dokumen rasmi dihantar ke WhatsApp.</p></div>
+  <div class="step"><h4>4️⃣ Enjoy Servis Premium</h4><p>Proses cepat, selamat & tanpa beratur.</p></div>
 </div>
 </section>
 
@@ -110,17 +196,24 @@ button:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(250,204,21,0
 <div class="testimonial-carousel">
   <div class="testimonial-track" id="testimonialTrack">
     <div class="testimonial"><h4>Afiq</h4><p>"Servis cepat & mudah, sangat puas hati!"</p></div>
-    <div class="testimonial"><h4>Siti</h4><p>"Renew roadtax & insurans tanpa beratur, sangat smooth!"</p></div>
-    <div class="testimonial"><h4>Hafiz</h4><p>"Paling trusted, e-cover terus ke WhatsApp!"</p></div>
-    <div class="testimonial"><h4>Farah</h4><p>"Proses pantas, harga berbaloi & selamat!"</p></div>
+    <div class="testimonial"><h4>Siti</h4><p>"Renew roadtax & insurans tanpa beratur, terbaik!"</p></div>
+    <div class="testimonial"><h4>Hafiz</h4><p>"Trusted & e-cover terus ke WhatsApp!"</p></div>
   </div>
 </div>
 </section>
 
-<!-- WhatsApp Form -->
+<!-- Urgency Bar -->
+<div class="urgency-box">
+  <div class="urgency-title">Proses Harian Tinggi — Tempoh menunggu makin meningkat</div>
+  <div class="urgency-bar"><div class="urgency-fill"></div></div>
+</div>
+
+<!-- WhatsApp Form (NOT EDITED) -->
 <section class="wrap">
 <h2>BORANG SEBUT HARGA</h2>
+
 <form id="waForm">
+
     <label>Jenis Kenderaan</label>
     <div class="select-wrap">
         <select id="jenis" required>
@@ -179,6 +272,7 @@ button:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(250,204,21,0
 
     <button type="submit">✅ HANTAR KE WHATSAPP</button>
     <div class="status" id="status"></div>
+
 </form>
 </section>
 
@@ -187,52 +281,97 @@ button:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(250,204,21,0
   WhatsApp 🚀
 </a>
 
+<!-- Notification Popup -->
+<div class="noti-popup" id="notiPopup">Seseorang baru sahaja renew insurans • 7 minit lalu</div>
+
+<!-- EXIT INTENT POPUP -->
+<div class="exit-popup" id="exitPopup">
+  <div class="exit-box">
+      <h3>Tunggu dulu! ⚠️</h3>
+      <p>Ramai pelanggan sedang renew sekarang.  
+      Jangan terlepas slot pantas hari ini.</p>
+
+      <a class="exit-btn" href="https://wa.me/60179699926?text=Hi,%20RenewRoadtaxMurah.%20Saya%20nak%20renew%20insurans">
+          💬 Terus WhatsApp Sekarang
+      </a>
+
+      <div class="exit-close" id="exitClose">Tutup</div>
+  </div>
+</div>
+
 <footer style="text-align:center;color:var(--accent);font-size:13px;margin-top:20px;">© 2025 Renew Premium • Semua Hak Terpelihara</footer>
 
+
 <script>
-// Testimonial Carousel Auto-slide
+// Testimonial Slider
 let track=document.getElementById("testimonialTrack");
 let index=0;
-function slideTestimonials(){
-  index=(index+1)%track.children.length;
-  track.style.transform=`translateX(-${index*100}%)`;
-}
-setInterval(slideTestimonials,4000);
+setInterval(()=>{index=(index+1)%track.children.length;track.style.transform=`translateX(-${index*100}%)`;},4000);
 
-// Form dynamic fields
-const jenisEl=document.getElementById("jenis");
-const coverageEl=document.getElementById("coverage");
-const cerminEl=document.getElementById("cermin");
-const banjirEl=document.getElementById("banjir");
-const towingEl=document.getElementById("towing");
-const labelCermin=document.getElementById("labelCermin");
-const labelBanjir=document.getElementById("labelBanjir");
-const labelTowing=document.getElementById("labelTowing");
-function hide(label, field){label.style.display="none";field.parentElement.style.display="none";}
-function show(label, field){label.style.display="block";field.parentElement.style.display="block";}
-function updateFields(){
-    const jenis=jenisEl.value;const coverage=coverageEl.value;
-    show(labelCermin,cerminEl);show(labelBanjir,banjirEl);show(labelTowing,towingEl);
-    if(jenis==="Motosikal"){hide(labelCermin,cerminEl);hide(labelBanjir,banjirEl);hide(labelTowing,towingEl);}
-    if(jenis==="Kereta" && coverage==="3rd Party"){hide(labelCermin,cerminEl);hide(labelBanjir,banjirEl);}
+// Live Visitor
+function randomVisitor(){
+  let v=Math.floor(Math.random()*6)+6;
+  document.getElementById("liveVisitor").textContent="🔵 "+v+" pelawat sedang melihat halaman ini";
 }
-jenisEl.addEventListener("change",updateFields);
-coverageEl.addEventListener("change",updateFields);
+setInterval(randomVisitor,6000);
+
+// Notification Popup
+function showNoti(){
+  const box=document.getElementById("notiPopup");
+  box.style.display="block";
+  setTimeout(()=>{box.style.display="none"},4200);
+}
+setTimeout(showNoti,3000);
+setInterval(showNoti,20000);
+
+// Form Visibility Logic
+function hide(label,field){label.style.display="none";field.parentElement.style.display="none";}
+function show(label,field){label.style.display="block";field.parentElement.style.display="block";}
+function updateFields(){
+  let jenis=document.getElementById("jenis").value;
+  let coverage=document.getElementById("coverage").value;
+  show(labelCermin,cermin);show(labelBanjir,banjir);show(labelTowing,towing);
+  if(jenis==="Motosikal"){hide(labelCermin,cermin);hide(labelBanjir,banjir);hide(labelTowing,towing);}
+  if(jenis==="Kereta" && coverage==="3rd Party"){hide(labelCermin,cermin);hide(labelBanjir,banjir);}
+}
+jenis.addEventListener("change",updateFields);
+coverage.addEventListener("change",updateFields);
 updateFields();
 
-// WhatsApp form submission
+// WhatsApp Submit
 const WHATSAPP_RECEIVER='60179699926';
 document.getElementById("waForm").addEventListener("submit",function(e){
-    e.preventDefault();
-    const statusEl=document.getElementById('status');
-    const data={nama:document.getElementById('nama').value.trim(),noWhatsapp:document.getElementById('wasap').value.trim(),jenisKenderaan:jenisEl.value,jenisCoverage:coverageEl.value,coverCermin:(cerminEl.parentElement.style.display==='none')?'Tiada':cerminEl.value,banjir:(banjirEl.parentElement.style.display==='none')?'Tiada':banjirEl.value,towing:(towingEl.parentElement.style.display==='none')?'Tiada':towingEl.value,roadtaxDigital:document.getElementById('digital').value};
-    const normalized=data.noWhatsapp.replace(/\D/g,'');
-    const phone=normalized.startsWith('0')?'60'+normalized.slice(1):normalized;
-    const msg=`BORANG SEBUTHARGA INSURANS\n\nNama: ${data.nama}\nNo. Whatsapp: ${data.noWhatsapp}\nJenis Kenderaan: ${data.jenisKenderaan}\nCoverage: ${data.jenisCoverage}\nCover Cermin: ${data.coverCermin}\nBanjir: ${data.banjir}\nTowing: ${data.towing}\nRoadtax Digital: ${data.roadtaxDigital}`;
-    statusEl.textContent='Membuka WhatsApp...';
-    window.open('https://wa.me/'+WHATSAPP_RECEIVER+'?text='+encodeURIComponent(msg),'_blank');
-    setTimeout(()=>{statusEl.textContent='Selesai. WhatsApp dibuka.';},1200);
+  e.preventDefault();
+  const normalized=document.getElementById("wasap").value.replace(/\D/g,'');
+  const phone=normalized.startsWith("0")?"60"+normalized.slice(1):normalized;
+
+  const msg=
+`BORANG SEBUTHARGA INSURANS
+
+Nama: ${nama.value}
+No. Whatsapp: ${wasap.value}
+Jenis Kenderaan: ${jenis.value}
+Coverage: ${coverage.value}
+Cover Cermin: ${(cermin.parentElement.style.display=='none')?'Tiada':cermin.value}
+Banjir: ${(banjir.parentElement.style.display=='none')?'Tiada':banjir.value}
+Towing: ${(towing.parentElement.style.display=='none')?'Tiada':towing.value}
+Roadtax Digital: ${digital.value}`;
+
+  window.open("https://wa.me/"+WHATSAPP_RECEIVER+"?text="+encodeURIComponent(msg),'_blank');
 });
+
+// EXIT INTENT POPUP
+let exitShown=false;
+document.addEventListener("mouseleave",function(e){
+    if(e.clientY<0 && !exitShown){
+        exitShown=true;
+        document.getElementById("exitPopup").style.display="flex";
+    }
+});
+document.getElementById("exitClose").onclick=function(){
+    document.getElementById("exitPopup").style.display="none";
+};
 </script>
+
 </body>
 </html>
