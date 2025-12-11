@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Renew Roadtax & Insurans • Premium 3.3</title>
+<title>Renew Roadtax & Insurans • Premium</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -29,20 +29,22 @@ p{text-align:center;color:var(--muted);margin-bottom:10px;}
 .hero-inner h1{font-size:28px;font-weight:800;color:var(--accent);text-shadow:0 0 10px rgba(250,204,21,0.7);}
 .hero-inner p{font-size:16px;color:var(--muted);margin-top:8px;}
 
-/* Live visitors & badges */
-.live-visitors{text-align:center;font-size:14px;color:#4ade80;margin-bottom:8px;}
+/* Social Badges */
 .social-badges{text-align:center;margin:10px 0;}
 .badge{display:inline-block;background:rgba(250,204,21,0.15);color:var(--accent);padding:6px 12px;border-radius:999px;font-size:13px;font-weight:700;margin:4px;}
 
 /* Benefits & Steps */
 .benefits, .steps{display:flex;flex-wrap:wrap;justify-content:center;gap:15px;margin-top:20px;}
-.benefit,.step{background:var(--card);padding:20px;border-radius:var(--radius);flex:1 1 150px;text-align:center;}
+.benefit,.step{background:var(--card);padding:20px;border-radius:var(--radius);flex:1 1 180px;text-align:center;}
 .benefit h3,.step h4{color:var(--accent);margin-bottom:8px;}
 .benefit p,.step p{color:var(--muted);font-size:14px;}
 
-/* Testimonials */
-.testimonial-container{position:relative;margin:20px 0;}
-.testimonial{background:rgba(250,204,21,0.1);padding:12px;border-radius:var(--radius);margin-bottom:12px;}
+/* Testimonial Carousel */
+.testimonial-carousel{position:relative;overflow:hidden;max-width:600px;margin:20px auto;border-radius:var(--radius);}
+.testimonial-track{display:flex;transition:transform 0.5s ease;}
+.testimonial{min-width:100%;background:var(--card);padding:20px;text-align:center;border-radius:var(--radius);}
+.testimonial h4{color:var(--accent);margin-bottom:8px;}
+.testimonial p{color:var(--muted);font-size:14px;}
 
 /* WhatsApp Form */
 .wrap{max-width:500px;margin:40px auto;}
@@ -60,14 +62,6 @@ button:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(250,204,21,0
 .cta-floating{position:fixed;bottom:20px;right:20px;background:var(--green);color:#fff;padding:12px 18px;border-radius:50px;font-weight:700;box-shadow:0 6px 12px rgba(0,0,0,0.2);z-index:999;text-align:center;}
 .cta-floating:hover{transform:translateY(-2px);transition:0.2s;}
 
-/* Exit intent popup */
-#exitPopup{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:1000;justify-content:center;align-items:center;text-align:center;padding:20px;}
-#exitPopup .popup-inner{background:var(--card);padding:30px;border-radius:var(--radius);max-width:400px;}
-#exitPopup h3{color:var(--accent);margin-bottom:15px;}
-#exitPopup p{color:var(--muted);margin-bottom:10px;}
-#exitPopup button{margin-top:15px;}
-#countdown{font-weight:800;color:#ef4444;}
-
 /* Media */
 @media(max-width:600px){.hero-inner h1{font-size:22px;}.hero-inner p{font-size:14px;}.benefits,.steps{flex-direction:column;}}
 </style>
@@ -83,7 +77,6 @@ button:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(250,204,21,0
   </div>
 </section>
 
-<div class="live-visitors" id="liveVisitors">Sedang dilihat oleh 12 pengunjung sekarang</div>
 <div class="social-badges">
   <span class="badge">Terpercaya sejak 2015</span>
   <span class="badge">>5000 pelanggan puas hati</span>
@@ -111,13 +104,16 @@ button:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(250,204,21,0
 </div>
 </section>
 
-<!-- Testimonials -->
+<!-- Testimonial Carousel -->
 <section>
 <h2>Testimonial Pelanggan</h2>
-<div class="testimonial-container">
-  <div class="testimonial">"Servis cepat & mudah, sangat puas hati!" – Afiq</div>
-  <div class="testimonial">"Renew roadtax & insurans tanpa beratur, sangat smooth!" – Siti</div>
-  <div class="testimonial">"Paling trusted, e-cover terus ke WhatsApp!" – Hafiz</div>
+<div class="testimonial-carousel">
+  <div class="testimonial-track" id="testimonialTrack">
+    <div class="testimonial"><h4>Afiq</h4><p>"Servis cepat & mudah, sangat puas hati!"</p></div>
+    <div class="testimonial"><h4>Siti</h4><p>"Renew roadtax & insurans tanpa beratur, sangat smooth!"</p></div>
+    <div class="testimonial"><h4>Hafiz</h4><p>"Paling trusted, e-cover terus ke WhatsApp!"</p></div>
+    <div class="testimonial"><h4>Farah</h4><p>"Proses pantas, harga berbaloi & selamat!"</p></div>
+  </div>
 </div>
 </section>
 
@@ -191,22 +187,17 @@ button:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(250,204,21,0
   WhatsApp 🚀
 </a>
 
-<!-- Exit Intent Popup -->
-<div id="exitPopup">
-  <div class="popup-inner">
-    <h3>🚨 Tunggu! Tawaran Eksklusif!</h3>
-    <p>Daftar sekarang & terima e-Cover terus ke WhatsApp. <strong>Promosi tamat dalam <span id="countdown">05:00</span> minit!</strong></p>
-    <button onclick="document.getElementById('exitPopup').style.display='none';">Tutup & Teruskan</button>
-  </div>
-</div>
-
 <footer style="text-align:center;color:var(--accent);font-size:13px;margin-top:20px;">© 2025 Renew Premium • Semua Hak Terpelihara</footer>
 
 <script>
-// Live visitors
-const liveVisitors=document.getElementById('liveVisitors');
-function randomVisitor(){liveVisitors.textContent=`Sedang dilihat oleh ${Math.floor(Math.random()*20+5)} pengunjung sekarang`;}
-setInterval(randomVisitor,5000);randomVisitor();
+// Testimonial Carousel Auto-slide
+let track=document.getElementById("testimonialTrack");
+let index=0;
+function slideTestimonials(){
+  index=(index+1)%track.children.length;
+  track.style.transform=`translateX(-${index*100}%)`;
+}
+setInterval(slideTestimonials,4000);
 
 // Form dynamic fields
 const jenisEl=document.getElementById("jenis");
@@ -242,29 +233,6 @@ document.getElementById("waForm").addEventListener("submit",function(e){
     window.open('https://wa.me/'+WHATSAPP_RECEIVER+'?text='+encodeURIComponent(msg),'_blank');
     setTimeout(()=>{statusEl.textContent='Selesai. WhatsApp dibuka.';},1200);
 });
-
-// Exit-Intent Popup
-let exitPopupShown=false;
-document.addEventListener('mouseout', function(e){
-  if(e.clientY < 10 && !exitPopupShown){
-    document.getElementById('exitPopup').style.display='flex';
-    exitPopupShown=true;
-    startCountdown();
-  }
-});
-
-// Countdown timer
-function startCountdown(){
-  let time=300; // 5 minutes in seconds
-  const countdownEl=document.getElementById('countdown');
-  const interval=setInterval(()=>{
-    let min=Math.floor(time/60);
-    let sec=time%60;
-    countdownEl.textContent=`${String(min).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
-    time--;
-    if(time<0){clearInterval(interval);countdownEl.textContent='00:00';}
-  },1000);
-}
 </script>
 </body>
 </html>
